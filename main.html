@@ -9,23 +9,19 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			if(arr.length<2){
-				return -Infinity;
-			}
-			let highest = -Infinity;
-			let secondhighest= -Infinity;
-			for(let num of arr){
-				if(num>highest){
-					secondhighest = highest;
-				    highest = num;
-				}
-				else if(secondhighest<num && secondhighest<highest){
-					secondhighest =num;
-				}
-			}
-			return secondhighest === -Infinity? -Infinity:secondhighest
-		}
+    if (arr.length < 2) {
+        return -Infinity;
+    }
+
+    let uniqueElements = [...new Set(arr)]; // Remove duplicates
+    if (uniqueElements.length < 2) {
+        return -Infinity; // Not enough unique values for a second-highest
+    }
+
+    uniqueElements.sort((a, b) => b - a); // Sort in descending order
+    return uniqueElements[1]; // Second-highest value
+}
+
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
